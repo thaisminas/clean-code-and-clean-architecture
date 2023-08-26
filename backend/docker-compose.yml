@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+
+  database:
+    image: postgres
+    container_name: database_cc-ca
+    restart: always
+    ports:
+      - '5441:5432'
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=cc-ca
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin-cc-ca
+    ports:
+      - '8080:80'
+    environment:
+      - PGADMIN_DEFAULT_PASSWORD=root
+      - PGADMIN_DEFAULT_EMAIL=thais@gmail.com
+    depends_on:
+      - database
+
+volumes:
+  pgdata:
