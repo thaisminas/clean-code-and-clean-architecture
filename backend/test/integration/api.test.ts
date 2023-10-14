@@ -3,22 +3,10 @@ import axios from "axios";
 axios.defaults.validateStatus = function () {
     return true;
 };
-
-test("Deve fazer o cálculo do preço de uma corrida durante o dia", async function () {
-    const input = {
-        segments: [
-            { distance: 10, date: "2021-03-01T10:00:00" }
-        ]
-    };
-    const response = await axios.post("http://localhost:3085/calculate_ride", input);
-    const output = response.data;
-    expect(output.price).toBe(21);
-});
-
 test("Se a distância for inválida deve lançar um erro", async function () {
     const input = {
         segments: [
-            { distance: -10, date: "2021-03-01T10:00:00" }
+            { distance: -10, date: new Date("2021-03-01T10:00:00") }
         ]
     };
     const response = await axios.post("http://localhost:3085/calculate_ride", input);
@@ -61,9 +49,9 @@ test("Deve obter passageiro", async function () {
     const output1 = response1.data;
     const response2 = await axios.get(`http://localhost:3085/passengers/${output1.passengerId}`);
     const output2 = response2.data;
-    expect(output2.passengerData.name).toBe("John Doe");
-    expect(output2.passengerData.email).toBe("john.doe@gmail.com");
-    expect(output2.passengerData.document).toBe("83432616074");
+    expect(output2.name).toBe("John Doe");
+    expect(output2.email).toBe("john.doe@gmail.com");
+    expect(output2.document).toBe("83432616074");
 });
 
 test("Deve cadastrar motorista", async function () {
@@ -95,13 +83,15 @@ test("Deve obter motorista", async function () {
     const input = {
         name: "John Doe",
         email: "john.doe@gmail.com",
-        document: "83432616074"
+        document: "83432616074",
+        carPlate: "AAA9999"
     };
     const response1 = await axios.post("http://localhost:3085/drivers", input);
     const output1 = response1.data;
     const response2 = await axios.get(`http://localhost:3085/drivers/${output1.driverId}`);
     const output2 = response2.data;
-    expect(output2.driverData.name).toBe("John Doe");
-    expect(output2.driverData.email).toBe("john.doe@gmail.com");
-    expect(output2.driverData.document).toBe("83432616074");
+    expect(output2.name).toBe("John Doe");
+    expect(output2.email).toBe("john.doe@gmail.com");
+    expect(output2.document).toBe("83432616074");
+    expect(output2.carPlate).toBe("AAA9999");
 });

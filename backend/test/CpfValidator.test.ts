@@ -1,11 +1,12 @@
-import {validate} from "../src/Cpf";
+import {validate} from "../src/CpfValidator";
+
 
 test.each([
        "83432616074",
        "74587887803",
        "87175659520"
 ])("Deve testar os cpfs válidos", function (cpf: string) {
-       const isValid = validate(cpf);
+       const isValid = validate(cpf)
        expect(isValid).toBeTruthy();
 });
 
