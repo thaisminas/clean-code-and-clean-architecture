@@ -4,10 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0528889-dee5-4669-98ef-65689d4a79bb" name="Changes" comment="feat: commit initial">
-      <change afterPath="$PROJECT_DIR$/backend/src/cli.ts" afterDir="false" />
+    <list default="true" id="f0528889-dee5-4669-98ef-65689d4a79bb" name="Changes" comment="refactor: add use cases for application">
+      <change afterPath="$PROJECT_DIR$/backend/src/application/respository/DriverRepository.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/infra/repository/DriverRepositoryDatebase.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/Api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/Api.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/application/usecase/CreateDriver.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/application/usecase/CreateDriver.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/application/usecase/GetDriver.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/application/usecase/GetDriver.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/test/integration/CreateDriver.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/test/integration/CreateDriver.test.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +42,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/thaisminas/Documents/curso-branas/refactor/clean-code-and-clean-architecture&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/thaisminas/Documents/curso-branas/refactor/clean-code-and-clean-architecture/backend/src/application/usecase&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -55,25 +60,29 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/backend/src/application/usecase" />
+      <recent name="$PROJECT_DIR$/backend/test/integration" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/backend/test/integration" />
       <recent name="$PROJECT_DIR$/backend/ride/src/infra/database" />
       <recent name="$PROJECT_DIR$/backend/ride/src/domain" />
       <recent name="$PROJECT_DIR$/backend/ride/src/application" />
       <recent name="$PROJECT_DIR$/backend/ride/src/cpf-validator" />
-      <recent name="$PROJECT_DIR$/backend/ride/src/use-case" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.start">
-    <configuration name="Deve cadastrar motorista" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Jest.Deve obter o motorista">
+    <configuration name="Deve obter motorista (1)" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
       <jest-package value="$PROJECT_DIR$/backend/node_modules/jest" />
       <working-dir value="$PROJECT_DIR$/backend" />
       <envs />
       <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/backend/test/api.test.ts" />
+      <test-file value="$PROJECT_DIR$/backend/test/integration/api.test.ts" />
       <test-names>
-        <test-name value="Deve cadastrar motorista" />
+        <test-name value="Deve obter motorista" />
       </test-names>
       <method v="2" />
     </configuration>
@@ -90,49 +99,52 @@
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="Não deve cadastrar o motorista" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="Deve obter o motorista" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
       <jest-package value="$PROJECT_DIR$/backend/node_modules/jest" />
       <working-dir value="$PROJECT_DIR$/backend" />
       <envs />
       <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/backend/test/api.test.ts" />
+      <test-file value="$PROJECT_DIR$/backend/test/integration/CreateDriver.test.ts" />
       <test-names>
-        <test-name value="Não deve cadastrar o motorista" />
+        <test-name value="Deve obter o motorista" />
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="Não deve cadastrar passageiro com cpf inválido" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="Deve obter passageiro (1)" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
       <jest-package value="$PROJECT_DIR$/backend/node_modules/jest" />
       <working-dir value="$PROJECT_DIR$/backend" />
       <envs />
       <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/backend/test/api.test.ts" />
+      <test-file value="$PROJECT_DIR$/backend/test/integration/api.test.ts" />
       <test-names>
-        <test-name value="Não deve cadastrar passageiro com cpf inválido" />
+        <test-name value="Deve obter passageiro" />
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/backend/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="start" />
-      </scripts>
+    <configuration name="Se a distância for inválida deve lançar um erro" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/backend/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$/backend" />
       <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/backend/test/integration/api.test.ts" />
+      <test-names>
+        <test-name value="Se a distância for inválida deve lançar um erro" />
+      </test-names>
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.start" />
+        <item itemvalue="Jest.Deve obter o motorista" />
+        <item itemvalue="Jest.Se a distância for inválida deve lançar um erro" />
+        <item itemvalue="Jest.Deve obter passageiro (1)" />
+        <item itemvalue="Jest.Deve obter motorista (1)" />
         <item itemvalue="Jest.Deve obter motorista" />
-        <item itemvalue="Jest.Não deve cadastrar o motorista" />
-        <item itemvalue="Jest.Deve cadastrar motorista" />
-        <item itemvalue="Jest.Não deve cadastrar passageiro com cpf inválido" />
       </list>
     </recent_temporary>
   </component>
@@ -166,6 +178,8 @@
       <workItem from="1693346033627" duration="440000" />
       <workItem from="1694296896211" duration="327000" />
       <workItem from="1694541435256" duration="1828000" />
+      <workItem from="1697310962757" duration="8524000" />
+      <workItem from="1697395149251" duration="5458000" />
     </task>
     <task id="LOCAL-00001" summary="feat: commit initial">
       <created>1693079474828</created>
@@ -174,7 +188,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693079474828</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="refactor: add use cases for application">
+      <created>1697320871001</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1697320871001</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -182,7 +203,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: commit initial" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: commit initial" />
+    <MESSAGE value="refactor: add use cases for application" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: add use cases for application" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -233,13 +255,13 @@
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/backend/src/Api.ts</url>
+          <url>file://$PROJECT_DIR$/backend/src/api.ts</url>
           <line>12</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/backend/test/api.test.ts</url>
-          <line>18</line>
+          <url>file://$PROJECT_DIR$/backend/test/integration/api.test.ts</url>
+          <line>6</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -248,34 +270,14 @@
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/backend/test/api.test.ts</url>
-          <line>35</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/backend/test/api.test.ts</url>
-          <line>30</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/backend/test/api.test.ts</url>
-          <line>37</line>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/backend/test/api.test.ts</url>
-          <line>59</line>
+          <url>file://$PROJECT_DIR$/backend/test/integration/api.test.ts</url>
+          <line>47</line>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/backend/test/api.test.ts</url>
-          <line>61</line>
+          <url>file://$PROJECT_DIR$/backend/test/integration/api.test.ts</url>
+          <line>49</line>
           <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/backend/test/api.test.ts</url>
-          <line>76</line>
-          <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

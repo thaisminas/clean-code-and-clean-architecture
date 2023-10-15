@@ -1,15 +1,10 @@
-import crypto from "crypto";
-import {validate} from "../../CpfValidator";
-import pgp from "pg-promise";
+import DriverRepository from "../../infra/repository/DriverRepositoryDatebase";
 
 export default class GetDriver {
-    constructor() {
-
+    constructor(readonly driverRepository: DriverRepository) {
     }
     async execute(input: Input): Promise<Output> {
-        const connection = pgp()('postgres://root:root@127.0.0.1:5441/cc-ca');
-        const [driverData] = await connection.query("select * from ccca.driver where driver_id = $1", [input.driverId]);
-        await connection.$pool.end();
+        const driverData = await this.driverRepository.get(input.driverId);
         return {
             driverId: driverData.driver_id,
             name: driverData.name,

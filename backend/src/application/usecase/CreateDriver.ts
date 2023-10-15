@@ -1,6 +1,7 @@
 import crypto from "crypto";
 import {validate} from "../../CpfValidator";
 import pgp from "pg-promise";
+import DriverRepository from "../../infra/repository/DriverRepositoryDatebase";
 
 export default class CreateDriver {
     constructor() {
@@ -9,11 +10,9 @@ export default class CreateDriver {
 
     async execute(input: Input): Promise<Output> {
         const driverId = crypto.randomUUID();
-        const {name, email, document, carPlate } = input;
-        if(!validate(document)) throw new Error('Invalid cpf');
-        const connection = pgp()('postgres://root:root@127.0.0.1:5441/cc-ca');
-        await connection.query("insert into ccca.driver (driver_id, name, email, document, car_plate) values ($1, $2, $3, $4, $5)", [driverId, name, email, document, carPlate]);
-        await connection.$pool.end();
+        if(!validate(input.document)) throw new Error('Invalid cpf');
+        const driverRepository = new DriverRepository();
+        await driverRepository.save(Object.assign(input, { driverId }))
         return {
             driverId
         }
