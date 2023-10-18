@@ -1,6 +1,7 @@
 import axios from "axios/index";
 import CreatePassenger from "../../src/application/usecase/CreatePassenger";
 import GetPassenger from "../../src/application/usecase/GetPassenger";
+import PassengerRepositoryDatebase from "../../src/infra/repository/PassengerRepositoryDatebase";
 
 test("Deve cadastrar passageiro", async function () {
     const input = {
@@ -8,7 +9,7 @@ test("Deve cadastrar passageiro", async function () {
         email: 'john.doe@gmail.com',
         document: '83432616074'
     };
-    const usecase = new CreatePassenger();
+    const usecase = new CreatePassenger(new PassengerRepositoryDatebase());
     const output = await usecase.execute(input);
     expect(output).toBeDefined();
 });
@@ -19,7 +20,7 @@ test("Deve obter passageiro", async function () {
         email: "john.doe@gmail.com",
         document: "83432616074"
     };
-    const usecase1 = new CreatePassenger();
+    const usecase1 = new CreatePassenger(new PassengerRepositoryDatebase());
     const output1 = await usecase1.execute(input);
     const usecase2 = new GetPassenger()
     const output2 = await usecase2.execute({ passengerId: output1.passengerId});

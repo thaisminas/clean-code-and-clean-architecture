@@ -4,15 +4,14 @@ import pgp from "pg-promise";
 import DriverRepository from "../../infra/repository/DriverRepositoryDatebase";
 
 export default class CreateDriver {
-    constructor() {
+    constructor(readonly driverRepository: DriverRepository) {
 
     }
 
     async execute(input: Input): Promise<Output> {
         const driverId = crypto.randomUUID();
         if(!validate(input.document)) throw new Error('Invalid cpf');
-        const driverRepository = new DriverRepository();
-        await driverRepository.save(Object.assign(input, { driverId }))
+        await this.driverRepository.save(Object.assign(input, { driverId }))
         return {
             driverId
         }

@@ -4,15 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0528889-dee5-4669-98ef-65689d4a79bb" name="Changes" comment="refactor: add use cases for application">
-      <change afterPath="$PROJECT_DIR$/backend/src/application/respository/DriverRepository.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/infra/repository/DriverRepositoryDatebase.ts" afterDir="false" />
+    <list default="true" id="f0528889-dee5-4669-98ef-65689d4a79bb" name="Changes" comment="refactor: add infrastructure layer and interfaces to repository">
+      <change afterPath="$PROJECT_DIR$/backend/src/application/respository/PassengerRepository.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/infra/repository/PassengerRepositoryDatebase.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/backend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/api.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/application/usecase/CreateDriver.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/application/usecase/CreateDriver.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/application/usecase/GetDriver.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/application/usecase/GetDriver.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/application/usecase/CreatePassenger.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/application/usecase/CreatePassenger.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/test/integration/CreateDriver.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/test/integration/CreateDriver.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/test/integration/CreatePassenger.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/backend/test/integration/CreatePassenger.test.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,30 +37,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/thaisminas/Documents/curso-branas/refactor/clean-code-and-clean-architecture/backend/src/application/usecase&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs.jest.jest_package&quot;: &quot;/Users/thaisminas/Documents/curso-branas/refactor/clean-code-and-clean-architecture/backend/node_modules/jest&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.obiscr.chatgpt.settings.ChatGPT&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/thaisminas/Documents/curso-branas/refactor/clean-code-and-clean-architecture/backend/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/thaisminas/Documents/curso-branas/refactor/clean-code-and-clean-architecture/backend/src/infra/repository",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs.jest.jest_package": "/Users/thaisminas/Documents/curso-branas/refactor/clean-code-and-clean-architecture/backend/node_modules/jest",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.obiscr.chatgpt.settings.ChatGPT",
+    "ts.external.directory.path": "/Users/thaisminas/Documents/curso-branas/refactor/clean-code-and-clean-architecture/backend/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/backend/src/infra/repository" />
       <recent name="$PROJECT_DIR$/backend/src/application/usecase" />
       <recent name="$PROJECT_DIR$/backend/test/integration" />
     </key>
@@ -72,30 +73,17 @@
       <recent name="$PROJECT_DIR$/backend/ride/src/cpf-validator" />
     </key>
   </component>
-  <component name="RunManager" selected="Jest.Deve obter o motorista">
-    <configuration name="Deve obter motorista (1)" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Jest.Se a distância for inválida deve lançar um erro">
+    <configuration name="Deve cadastrar motorista" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
       <jest-package value="$PROJECT_DIR$/backend/node_modules/jest" />
       <working-dir value="$PROJECT_DIR$/backend" />
       <envs />
       <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/backend/test/integration/api.test.ts" />
+      <test-file value="$PROJECT_DIR$/backend/test/integration/CreateDriver.test.ts" />
       <test-names>
-        <test-name value="Deve obter motorista" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="Deve obter motorista" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/backend/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$/backend" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/backend/test/api.test.ts" />
-      <test-names>
-        <test-name value="Deve obter motorista" />
+        <test-name value="Deve cadastrar motorista" />
       </test-names>
       <method v="2" />
     </configuration>
@@ -112,14 +100,27 @@
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="Deve obter passageiro (1)" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="Deve obter o motorista1" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
       <jest-package value="$PROJECT_DIR$/backend/node_modules/jest" />
       <working-dir value="$PROJECT_DIR$/backend" />
       <envs />
       <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/backend/test/integration/api.test.ts" />
+      <test-file value="$PROJECT_DIR$/backend/test/integration/CreateDriver.test.ts" />
+      <test-names>
+        <test-name value="Deve obter o motorista1" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="Deve obter passageiro" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/backend/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$/backend" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/backend/test/integration/CreatePassenger.test.ts" />
       <test-names>
         <test-name value="Deve obter passageiro" />
       </test-names>
@@ -140,11 +141,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Jest.Deve obter o motorista" />
         <item itemvalue="Jest.Se a distância for inválida deve lançar um erro" />
-        <item itemvalue="Jest.Deve obter passageiro (1)" />
-        <item itemvalue="Jest.Deve obter motorista (1)" />
-        <item itemvalue="Jest.Deve obter motorista" />
+        <item itemvalue="Jest.Deve obter o motorista1" />
+        <item itemvalue="Jest.Deve obter o motorista" />
+        <item itemvalue="Jest.Deve cadastrar motorista" />
+        <item itemvalue="Jest.Deve obter passageiro" />
       </list>
     </recent_temporary>
   </component>
@@ -179,7 +180,10 @@
       <workItem from="1694296896211" duration="327000" />
       <workItem from="1694541435256" duration="1828000" />
       <workItem from="1697310962757" duration="8524000" />
-      <workItem from="1697395149251" duration="5458000" />
+      <workItem from="1697395149251" duration="5548000" />
+      <workItem from="1697482406309" duration="34000" />
+      <workItem from="1697503257381" duration="1304000" />
+      <workItem from="1697587435570" duration="3536000" />
     </task>
     <task id="LOCAL-00001" summary="feat: commit initial">
       <created>1693079474828</created>
@@ -195,7 +199,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697320871001</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="refactor: add infrastructure layer and interfaces to repository">
+      <created>1697403010347</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1697403010347</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -204,7 +215,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: commit initial" />
     <MESSAGE value="refactor: add use cases for application" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: add use cases for application" />
+    <MESSAGE value="refactor: add infrastructure layer and interfaces to repository" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: add infrastructure layer and interfaces to repository" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -256,7 +268,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/backend/src/api.ts</url>
-          <line>12</line>
+          <line>13</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
