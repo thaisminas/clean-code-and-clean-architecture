@@ -4,13 +4,13 @@ export default class GetDriver {
     constructor(readonly driverRepository: DriverRepository) {
     }
     async execute(input: Input): Promise<Output> {
-        const driverData = await this.driverRepository.get(input.driverId);
+        const driver = await this.driverRepository.get(input.driverId);
         return {
-            driverId: driverData.driver_id,
-            name: driverData.name,
-            email: driverData.email,
-            document: driverData.document,
-            carPlate: driverData.car_plate
+            driverId: driver.driverId,
+            name: driver.name,
+            email: driver.email.value,
+            document: driver.document.value,
+            carPlate: driver.carPlate
         }
     }
 

@@ -14,6 +14,17 @@ test("Deve cadastrar passageiro", async function () {
     expect(output).toBeDefined();
 });
 
+test("Não deve cadastrar passageiro com email inválido", async function () {
+    const input = {
+        name: 'john Doe',
+        email: 'john.doe@gmail',
+        document: '83432616074'
+    };
+    const usecase = new CreatePassenger(new PassengerRepositoryDatebase());
+    await expect(async () => await usecase.execute(input)).rejects.toThrow(new Error('Invalid Email'));
+});
+
+
 test("Deve obter passageiro", async function () {
     const input = {
         name: "John Doe",
@@ -22,7 +33,7 @@ test("Deve obter passageiro", async function () {
     };
     const usecase1 = new CreatePassenger(new PassengerRepositoryDatebase());
     const output1 = await usecase1.execute(input);
-    const usecase2 = new GetPassenger()
+    const usecase2 = new GetPassenger(new PassengerRepositoryDatebase())
     const output2 = await usecase2.execute({ passengerId: output1.passengerId});
     expect(output2.name).toBe("John Doe");
     expect(output2.email).toBe("john.doe@gmail.com");

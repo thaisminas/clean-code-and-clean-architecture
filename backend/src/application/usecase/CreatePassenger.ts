@@ -1,19 +1,18 @@
 import crypto from "crypto";
-import {validate} from "../../CpfValidator";
+import {validate as validateCpf } from "../../CpfValidator";
+import { validate as validateEmail } from "../../EmailValidator";
 import pgp from "pg-promise";
 import PassengerRepository from "../respository/PassengerRepository";
+import Passenger from "../../domain/Passenger";
 
 export default class CreatePassenger {
     constructor(readonly passengerRepository: PassengerRepository) {
-
     }
-
     async execute(input: Input): Promise<Output> {
-        const passengerId = crypto.randomUUID();
-        if(!validate(input.document)) throw new Error('Invalid cpf');
-        await this.passengerRepository.save(Object.assign(input, { passengerId }))
+        const passenger = Passenger.create(input.name, input.email, input.document);
+        await this.passengerRepository.save(passenger);
         return {
-            passengerId
+            passengerId: passenger.passengerId
         }
     }
 

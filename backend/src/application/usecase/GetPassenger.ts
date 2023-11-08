@@ -1,21 +1,16 @@
-import crypto from "crypto";
-import {validate} from "../../CpfValidator";
-import pgp from "pg-promise";
+import PassengerRepository from "../respository/PassengerRepository";
 
 export default class GetPassenger {
-    constructor() {
-
+    constructor(readonly passengerRepository: PassengerRepository) {
     }
 
     async execute(input: Input): Promise<Output> {
-        const connection = pgp()('postgres://root:root@127.0.0.1:5441/cc-ca');
-        const [passengerData] = await connection.query("select * from ccca.passenger where passenger_id = $1", [input.passengerId]);
-        await connection.$pool.end();
+        const passenger = await this.passengerRepository.get(input.passengerId);
        return {
-           passengerId: passengerData.passenger_id,
-           name: passengerData.name,
-           email: passengerData.email,
-           document: passengerData.document
+           passengerId: passenger.passengerId,
+           name: passenger.name,
+           email: passenger.email.value,
+           document: passenger.document.value
        };
     }
 

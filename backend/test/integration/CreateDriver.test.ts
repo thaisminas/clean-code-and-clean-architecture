@@ -56,7 +56,7 @@ test("Deve obter o motorista2", async function () {
     const usecase2 = new GetDriver(new DriverRepositoryDatabase());
     const output2 = await usecase2.execute({ driverId: output1.driverId });
     expect(output2.name).toBe("John Doe");
-    expect(output2.email).toBe("john.doe@gmail.com");
-    expect(output2.document).toBe("83432616074");
+    expect(output2.email.value).toBe("john.doe@gmail.com");
+    expect(output2.document.value).toBe("83432616074");
     expect(output2.carPlate).toBe("AAA9999");
 });

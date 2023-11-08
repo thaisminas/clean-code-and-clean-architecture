@@ -6,6 +6,7 @@ import CreateDriver from "./application/usecase/CreateDriver";
 import GetPassenger from "./application/usecase/GetPassenger";
 import GetDriver from "./application/usecase/GetDriver";
 import DriverRepositoryDatabase from "./infra/repository/DriverRepositoryDatebase";
+import PassengerRepositoryDatebase from "./infra/repository/PassengerRepositoryDatebase";
 const app = express();
 
 app.use(express.json());
@@ -22,7 +23,7 @@ app.post("/calculate_ride", async function (req, res) {
 
 app.post('/passengers', async function (req, res){
     try {
-       const usecase = new CreatePassenger();
+       const usecase = new CreatePassenger(new PassengerRepositoryDatebase());
        const output = await usecase.execute(req.body);
        res.json(output);
     }catch (e: any){
@@ -31,7 +32,7 @@ app.post('/passengers', async function (req, res){
 });
 
 app.get('/passengers/:passengerId', async function (req, res){
-    const usecase = new GetPassenger();
+    const usecase = new GetPassenger(new PassengerRepositoryDatebase());
     const output = await usecase.execute({passengerId: req.params.passengerId})
     res.json(output)
 })
