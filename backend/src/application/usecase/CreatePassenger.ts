@@ -1,7 +1,3 @@
-import crypto from "crypto";
-import {validate as validateCpf } from "../../CpfValidator";
-import { validate as validateEmail } from "../../EmailValidator";
-import pgp from "pg-promise";
 import PassengerRepository from "../respository/PassengerRepository";
 import Passenger from "../../domain/Passenger";
 

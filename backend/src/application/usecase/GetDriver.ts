@@ -10,7 +10,7 @@ export default class GetDriver {
             name: driver.name,
             email: driver.email.value,
             document: driver.document.value,
-            carPlate: driver.carPlate
+            carPlate: driver.carPlate.value
         }
     }
 
